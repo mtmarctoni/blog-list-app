@@ -22,7 +22,7 @@ jobs:
           node-version: '14'
 
       - name: Install npm dependencies
-        run: npm ci
+        run: npm i
 
       - name: Build the app
         run: npm run build
