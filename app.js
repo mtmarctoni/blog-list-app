@@ -29,7 +29,7 @@ mongoose
     })
 
 app.use(cors())
-app.use(express.static('../client/dist'))
+app.use(express.static('dist'))
 app.use(express.json())
 
 app.use(logRequest)
@@ -47,7 +47,7 @@ app.use('/api/blogs', blogRouter)
 // not the best solution, but works for now
 app.get('/*', (req, res, next) => {
     if (req.path.startsWith('/blogs') || req.path.startsWith('/users') || req.path.startsWith('/login')) {
-        res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+        res.sendFile(path.join(__dirname, '/dist/index.html'))
     }
     else {
         next()

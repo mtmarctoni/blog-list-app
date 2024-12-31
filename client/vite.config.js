@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/': {
-        target: 'https://blog-list-app.netlify.app/server',
+        target: 'https://blog-list-app.netlify.app',
         changeOrigin: true,
       },
     },
