@@ -6,8 +6,9 @@
     "scripts": {
         "start": "cross-env NODE_ENV=production node index.js",
         "dev": "cross-env NODE_ENV=development nodemon index.js",
-        "build:ui": "cd ../client && npm run build",
+        "build:ui": "rmdir /s /q dist && mkdir dist && cd ..\\client && npm run build && xcopy dist ..\\server\\dist /e /i /h",
         "gitpush": "cd ../ && git add . && git commit -m 'update' && git push -u origin main",
+        "deploy:full": "npm run build:ui && npm run gitpush",
         "test": "cross-env NODE_ENV=test node --test",
         "test:start": "cross-env NODE_ENV=test node index.js"
     },
