@@ -1,9 +1,4 @@
 name: Deploy to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 
 on:
   push:
@@ -13,23 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: npm i
 
-      - name: Start server
-        run: npm start &
+      - name: Start the server
+        run: npm start
+
+      - name: Set up environment variables
+        run: echo "ENV_VAR_NAME=${{ secrets.ENV_VAR_NAME }}" >> $GITHUB_ENV
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./dist
