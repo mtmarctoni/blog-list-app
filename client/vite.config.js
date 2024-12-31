@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
-        target: 'https://blog-list-app.netlify.app',
+      '/': {
+        target: 'https://blog-list-app.netlify.app/server',
         changeOrigin: true,
       },
     },
