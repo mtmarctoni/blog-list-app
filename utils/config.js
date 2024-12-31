@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const TEST_M = 'this is a string test'
+const TEST_M = process.env.TEST_M
 const PORT = process.env.PORT || 3003
 const MONGO_DB_URI =
     process.env.NODE_ENV === 'test'
