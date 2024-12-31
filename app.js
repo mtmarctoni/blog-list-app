@@ -1,4 +1,4 @@
-const { MONGO_DB_URI } = require('./utils/config')
+const { MONGO_DB_URI, TEST_M } = require('./utils/config')
 const express = require('express')
 const path = require('path')
 require('express-async-errors')
@@ -15,6 +15,10 @@ const {
     getAuthToken,
 } = require('./utils/middlewares')
 const app = express()
+
+// log to see if env variables are read
+info('MONGO_DB_URI:', MONGO_DB_URI)
+info('TEST:' , TEST_M)
 
 //console.log(MONGO_DB_URI)
 info(`Connecting to MongoDB`)
