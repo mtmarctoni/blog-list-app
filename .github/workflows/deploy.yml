@@ -9,18 +9,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      MONGO_DB_URI: ${{ secrets.MONGO_DB_URI }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Install npm dependencies
-        run: npm i
+        run: npm install
 
       - name: Start the server
         run: npm start
-
-      - name: Set up environment variables
-        run: echo "ENV_VAR_NAME=${{ secrets.ENV_VAR_NAME }}" >> $GITHUB_ENV
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
