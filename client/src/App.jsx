@@ -8,6 +8,7 @@ import Blog from './components/Blog'
 import Notification from './components/Notification'
 import Users from './components/Users'
 import User from './components/User'
+import NotFound from './components/NotFound'
 
 import loginService from './services/login'
 
@@ -67,6 +68,7 @@ const App = () => {
         <Route path="/blogs/:id" element={<Blog isLogged={isLogged} />} />
         <Route path="/users" element={<Users />} />
         <Route path="/users/:id" element={<User />} />
+        <Route element={<NotFound />} />
       </Routes>
     </div>
   )

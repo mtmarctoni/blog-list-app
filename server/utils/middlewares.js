@@ -32,6 +32,25 @@ const errorHandler = (err, req, res, next) => {
 }
 
 const logRequest = (req, res, next) => {
+    const originalEnd = res.end;
+
+    res.end = function (chunk, encoding) {
+        originalEnd.call(this, chunk, encoding);
+
+        info(
+            `Request completed:
+            ${req.method} ${req.path} - ${res.statusCode} - ${JSON.stringify(req.body)}
+            ---`
+        )
+    };
+
+    next();
+}
+
+/*
+// This way to get info about the request is not the best because by default status code is 200,
+// so we can't get the status code of the request after it has been sent.
+const logRequest = (req, res, next) => {
     info(
         `Incoming request:
         ${req.method} ${req.path} - ${res.statusCode} - ${JSON.stringify(req.body)}
@@ -39,6 +58,7 @@ const logRequest = (req, res, next) => {
     )
     next()
 }
+    */
 
 const getAuthToken = (req, res, next) => {
     const authorization = req.get('Authorization')
