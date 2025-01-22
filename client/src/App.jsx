@@ -60,7 +60,7 @@ const App = () => {
     <div>
       <Navigation isLogged={isLogged} setIsLogged={setIsLogged} />
       <Notification />
-      <h1 className="flex justify-center m-5 text-4xl font-bold mb-2 align-middle text-gray-900">
+      <h1 className="flex justify-center m-5 text-4xl font-bold mb-2 align-middle text-blue-800">
         Blog List App
       </h1>
       <Routes>
